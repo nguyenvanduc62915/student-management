@@ -1,9 +1,12 @@
 package com.example.studentmanagament.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "_semesters")
@@ -22,5 +25,8 @@ public class Semester extends BaseEntity{
     // Hệ số
     @Column(name = "coefficient")
     private String coefficient;
+    @OneToMany(mappedBy = "semester", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Point> points;
 }
 

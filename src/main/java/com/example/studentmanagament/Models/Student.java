@@ -1,11 +1,14 @@
 package com.example.studentmanagament.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Properties;
+import java.util.Set;
 
 @Entity
 @Table(name = "_students")
@@ -34,4 +37,22 @@ public class Student extends BaseEntity{
     private String motherIsFullName;
     @Column(name = "email")
     private String email;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "nation_id", foreignKey = @ForeignKey(name = "FK_student_nation"))
+    private Nation nation;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "religion_id", foreignKey = @ForeignKey(name = "FK_student_relegion"))
+    private Religion religion;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "father_is_occupation", foreignKey = @ForeignKey(name = "FK_student_father"))
+    private Profession fatherIsOccupation;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "mother_is_occupation", foreignKey = @ForeignKey(name = "FK_student_mother"))
+    private Profession motherIsOccupation;
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Layering> layerings;
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Point> points;
 }

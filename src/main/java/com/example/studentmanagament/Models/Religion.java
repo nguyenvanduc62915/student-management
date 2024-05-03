@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "_religions")
 @Data
@@ -19,4 +21,6 @@ public class Religion extends BaseEntity{
     // Tên tôn giáo
     @Column(name = "religious_name")
     private String religiousName;
+    @OneToMany(mappedBy = "religion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Student> students;
 }

@@ -26,7 +26,12 @@ public class Subject extends BaseEntity{
     @Column(name = "number_of_priods")
     private String numberOfPriods;
     @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id", foreignKey = @ForeignKey(name = "FK_subject_teacher"))
     @JsonIgnore
     private Set<Teacher> teachers;
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Allot> allots;
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Point> points;
 }

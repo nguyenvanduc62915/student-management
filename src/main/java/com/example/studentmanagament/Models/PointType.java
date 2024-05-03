@@ -1,9 +1,12 @@
 package com.example.studentmanagament.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "_point_types")
@@ -20,5 +23,7 @@ public class PointType extends BaseEntity{
     private String pointTypeName;
     // Hệ số
     @Column(name = "coefficient")
-    private int coefficient;
+    @OneToMany(mappedBy = "pointType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Point> points;
 }
