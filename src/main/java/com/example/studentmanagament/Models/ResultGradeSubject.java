@@ -11,7 +11,7 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultGradeSubject {
+public class ResultGradeSubject extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_grade_subject_id")

@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "_teachers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Teacher {
+public class Teacher extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "teacher_id")
@@ -23,4 +26,6 @@ public class Teacher {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Subject subject;
 }
