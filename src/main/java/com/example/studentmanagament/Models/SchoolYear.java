@@ -2,9 +2,12 @@ package com.example.studentmanagament.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import java.util.Set;
 
@@ -21,6 +24,8 @@ public class SchoolYear extends BaseEntity{
     private int id;
     // Tên năm học
     @Column(name = "name_of_school_year")
+    @Size(max = 4, message = "Tên năm học được phép tối đa 4 ký tự!")
+    @NotBlank(message = "Tên năm học không được bỏ trống!")
     private String nameOfSchoolYear;
     @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore

@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL) // Các trường null không được trả về kết quả để giảm tải dung lượng
+@Validated
 public class UserDTO {
     private Long id;
     @NotBlank(message = "Họ không được bỏ trống")

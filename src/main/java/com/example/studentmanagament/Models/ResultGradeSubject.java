@@ -1,9 +1,11 @@
 package com.example.studentmanagament.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 
 @Entity
@@ -18,8 +20,10 @@ public class ResultGradeSubject extends BaseEntity {
     private int id;
     @Column(name = "quantity_passed")
     // Số lượng đạt
+    @Min(value = 0, message = "Số lượng đạt lớn hơn hoặc bằng 0!")
     private int quantityPassed;
     @Column(name = "rate")
+    @Range(min = 0, max = 100, message = "Tỉ lệ phải nằm trong khoảng từ 0 đến 100!")
     // Tỉ lệ
     private Double rate;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

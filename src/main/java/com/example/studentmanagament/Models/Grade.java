@@ -2,9 +2,12 @@ package com.example.studentmanagament.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import java.util.Set;
 
@@ -21,9 +24,13 @@ public class Grade extends BaseEntity{
     private int id;
     // Tên lớp
     @Column(name = "grade_name")
+    @Size(max = 15, message = "Tên lớp không được phép vượt quá 15 ký tự!")
+    @NotBlank(message = "Tên lớp không được bỏ trống!")
     private String gradeName;
     // Sĩ số
     @Column(name = "number")
+    @Range(min = 1, max = 50, message = "Sĩ số lớp có ít nhất 1 học sinh và nhiều nhất là 50 học sinh!")
+    @NotBlank(message = "Sĩ số không được bỏ trống!")
     private int number;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "block_id", foreignKey = @ForeignKey(name = "FK_grade_block"))

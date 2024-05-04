@@ -1,9 +1,13 @@
 package com.example.studentmanagament.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,14 +27,23 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "user_id")
     private Long id;
     @Column(name = "fisrt_name")
+    @NotBlank(message = "Họ không được để trống!")
+    @Size(max = 50, message = "Họ không được phép vượt quá 50 ký tự!")
     private String fisrtName;
     @Column(name = "last_name")
+    @NotBlank(message = "Tên không được để trống!")
+    @Size(max = 50, message = "Tên không được phép vượt quá 50 ký tự!")
     private String lastName;
     @Column(name = "username")
+    @NotBlank(message = "Username không được bỏ trống!")
+    @Min(value = 12, message = "Tài khoản tối thiểu là 12 ký tự!")
     private String username;
     @Column(name = "password")
+    @Min(value = 12, message = "Tài khoản tối thiểu là 12 ký tự!")
+    @NotBlank(message = "Mật khẩu không được bỏ trống!")
     private String password;
     @Column(name = "address")
+    @Size(max = 400, message = "Địa chỉ không được phép vượt quá 400 ký tự!")
     private String address;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")

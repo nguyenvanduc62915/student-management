@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "_result_student_all_years")
@@ -17,11 +18,14 @@ public class ResultStudentAllYear extends BaseEntity{
     private int id;
     @Column(name = "semester_one_GPA")
     // Điểm trung bình học kỳ 1
+    @Range(min = 0, max = 10, message = "Điểm học kỳ 1 thấp nhất là 0 và cao nhất là 10!")
     private Double semesterOneGPA;
     @Column(name = "semester_two_GPA")
     // Điểm trung bình học kỳ 2
+    @Range(min = 0, max = 10, message = "Điểm học kỳ 2 thấp nhất là 0 và cao nhất là 10!")
     private Double semesterTwoGPA;
     @Column(name = "semester_all_year_GPA")
+    @Range(min = 0, max = 10, message = "Điểm trung bình cả năm học thấp nhất là 0 và cao nhất là 10!")
     // Điểm trung bình cả năm học
     private Double semesterAllYearGPA;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

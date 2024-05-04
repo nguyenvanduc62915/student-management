@@ -1,9 +1,11 @@
 package com.example.studentmanagament.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "_points")
@@ -17,6 +19,7 @@ public class Point extends BaseEntity{
     @Column(name = "point_id")
     private int id;
     @Column(name = "scores")
+    @Range(min = 0, max = 10, message = "Điểm thấp nhất là 0 và cao nhất là 10!")
     private Double scores;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id", foreignKey = @ForeignKey(name = "FK_point_student"))
