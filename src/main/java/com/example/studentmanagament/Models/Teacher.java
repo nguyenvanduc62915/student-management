@@ -2,6 +2,7 @@ package com.example.studentmanagament.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class Teacher extends BaseEntity{
     @Column(name = "phone_number")
     @Size(min = 10, max = 10, message = "Số điện thoại phải có đúng 10 ký tự!")
     private String phoneNumber;
+    @Email(message = "Email không hợp lệ!")
     @Column(name = "email")
     private String email;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

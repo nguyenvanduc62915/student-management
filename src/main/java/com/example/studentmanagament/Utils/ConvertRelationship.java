@@ -1,33 +1,30 @@
 package com.example.studentmanagament.Utils;
 
-import com.example.studentmanagament.DTO.UserDTO;
-import com.example.studentmanagament.Models.User;
+import com.example.studentmanagament.DTO.AcademicAbilityDTO;
+import com.example.studentmanagament.Models.AcademicAbility;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConvertRelationship {
-    public User convertUserDTOToUser(UserDTO userDTO){
-        User user = new User();
-        user.setId(userDTO.getId());
-        user.setAddress(userDTO.getAddress());
-        user.setFisrtName(userDTO.getFisrtName());
-        user.setLastName(userDTO.getLastName());
-        user.setUsername(userDTO.getUsername());
-        user.setCreateAt(userDTO.getCreateAt());
-        user.setPassword(userDTO.getPassword());
-        user.setUpdateAt(userDTO.getUpdateAt());
-        return user;
+    public AcademicAbility convertAcademicAbilityDTOToAcademicAbility(AcademicAbilityDTO academicAbilityDTO){
+        AcademicAbility academicAbility = new AcademicAbility();
+        academicAbility.setId(academicAbilityDTO.getAcademicAbilityId());
+        academicAbility.setMinimumScore(academicAbilityDTO.getMinimumScore());
+        academicAbility.setMaximumScore(academicAbilityDTO.getMaximumScore());
+        academicAbility.setSubjectNotBelow(academicAbilityDTO.getSubjectNotBelow());
+        academicAbility.setCreateAt(academicAbilityDTO.getCreateAt());
+        academicAbility.setUpdateAt(academicAbilityDTO.getUpdateAt());
+        return academicAbility;
     }
-    public UserDTO convertUserToUserDTO(User user){
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setAddress(user.getAddress());
-        userDTO.setFisrtName(user.getFisrtName());
-        userDTO.setLastName(user.getLastName());
-        userDTO.setUsername(user.getUsername());
-        userDTO.setCreateAt(user.getCreateAt());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setUpdateAt(user.getUpdateAt());
-        return userDTO;
+
+    public AcademicAbilityDTO convertAcademicAbilityToAcademicAbilityDTO(AcademicAbility academicAbility){
+        AcademicAbilityDTO academicAbilityDTO = new AcademicAbilityDTO();
+        academicAbilityDTO.setAcademicAbilityId(academicAbility.getId());
+        academicAbilityDTO.setMinimumScore(academicAbility.getMinimumScore());
+        academicAbilityDTO.setMaximumScore(academicAbility.getMaximumScore());
+        academicAbilityDTO.setSubjectNotBelow(academicAbility.getSubjectNotBelow());
+        academicAbilityDTO.setCreateAt(academicAbility.getCreateAt());
+        academicAbilityDTO.setUpdateAt(academicAbility.getUpdateAt());
+        return academicAbilityDTO;
     }
 }

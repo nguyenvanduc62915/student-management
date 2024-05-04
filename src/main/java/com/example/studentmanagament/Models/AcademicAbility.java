@@ -32,7 +32,7 @@ public class AcademicAbility extends BaseEntity{
     @Column(name = "maximum_score")
     @Min(value = 0, message = "Điểm cao nhất là 10!")
     @NotBlank(message = "Điểm tối đa không được bỏ trống!")
-    private Double maximum_score;
+    private Double maximumScore;
     // Môn học không dưới
     @Column(name = "subject_not_below")
     @Range(min = 0, max = 10, message = "Điểm thấp nhất là 0 và cao nhất là 10!")
