@@ -22,4 +22,16 @@ public class ResultGradeSubject extends BaseEntity {
     @Column(name = "rate")
     // Tỉ lệ
     private Double rate;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "grade_id", foreignKey = @ForeignKey(name = "FK_resultgradesubject_grade"))
+    private Grade grade;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "school_year_id", foreignKey = @ForeignKey(name = "FK_resultgradesubject_schoolyear"))
+    private SchoolYear schoolYear;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "subject_id", foreignKey = @ForeignKey(name = "FK_resultgradesubject_subject"))
+    private Subject subject;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "semester_id", foreignKey = @ForeignKey(name = "FK_resultgradesubject_semester"))
+    private Semester semester;
 }

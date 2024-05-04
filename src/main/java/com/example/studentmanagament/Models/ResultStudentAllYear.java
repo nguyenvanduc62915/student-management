@@ -24,4 +24,22 @@ public class ResultStudentAllYear extends BaseEntity{
     @Column(name = "semester_all_year_GPA")
     // Điểm trung bình cả năm học
     private Double semesterAllYearGPA;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_student"))
+    private Student student;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "grade_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_grade"))
+    private Grade grade;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "school_year_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_schoolyear"))
+    private SchoolYear schoolYear;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "conduct_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_conduct"))
+    private Conduct conduct;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "academic_ability_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_academicability"))
+    private AcademicAbility academicAbility;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "result_id", foreignKey = @ForeignKey(name = "FK_resultstudentallyear_result"))
+    private Result result;
 }

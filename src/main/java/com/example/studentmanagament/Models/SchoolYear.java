@@ -34,4 +34,16 @@ public class SchoolYear extends BaseEntity{
     @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Point> points;
+    @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ResultStudentAllYear> resultStudentAllYears;
+    @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ResultStudentSubject> resultStudentSubjects;
+    @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ResultGradeSubject> resultGradeSubjects;
+    @OneToMany(mappedBy = "schoolYear", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ResultGradeSemester> resultGradeSemesters;
 }
