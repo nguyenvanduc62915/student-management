@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GradeDTO {
-    private int id;
+    private int gradeId;
     // Tên lớp
     @Size(max = 15, message = "Tên lớp không được phép vượt quá 15 ký tự!")
     @NotBlank(message = "Tên lớp không được bỏ trống!")
