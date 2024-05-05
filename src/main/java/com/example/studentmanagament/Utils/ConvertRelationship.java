@@ -4,8 +4,6 @@ import com.example.studentmanagament.DTO.*;
 import com.example.studentmanagament.Models.*;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
 public class ConvertRelationship {
     public AcademicAbility convertAcademicAbilityDTOToAcademicAbility(AcademicAbilityDTO academicAbilityDTO){
