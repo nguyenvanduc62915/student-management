@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -31,6 +32,8 @@ public class UserDTO {
     private String password;
     @Size(max = 400, message = "Địa chỉ không được phép vượt quá 400 ký tự!")
     private String address;
+    @Email(message = "Email không hợp lệ")
+    private String email;
     private LocalDate createAt;
     private LocalDate updateAt;
 }

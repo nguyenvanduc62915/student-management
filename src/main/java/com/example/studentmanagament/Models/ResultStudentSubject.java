@@ -50,5 +50,5 @@ public class ResultStudentSubject extends BaseEntity{
     private Subject subject;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "semester_id", foreignKey = @ForeignKey(name = "FK_resultstudensubject_semester"))
-    private Semester semester45r4;
+    private Semester semester;
 }

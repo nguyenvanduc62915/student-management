@@ -1,6 +1,7 @@
 package com.example.studentmanagament.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -45,6 +46,9 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "address")
     @Size(max = 400, message = "Địa chỉ không được phép vượt quá 400 ký tự!")
     private String address;
+    @Column(name = "email")
+    @Email(message = "Email không hợp lệ")
+    private String email;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
