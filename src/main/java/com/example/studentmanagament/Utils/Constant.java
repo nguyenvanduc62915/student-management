@@ -5,6 +5,7 @@ public class Constant {
     public static final String SUCCESS_ADD_MESSAGE= "Thêm thành công";
     public static final String SUCCESS_UPDATE_MESSAGE = "Sửa thành công";
     public static final String SUCCESS_DELETE_MESSAGE = "Xoá thành công";
+    public static final String INVALID_PAGE_LIMIT = "Giới hạn trang không hợp lệ";
     public static final String VALIDATION_FAILED_MESSAGE = "Xác thực không thành công";
     public static final int INTERNAL_SERVER_ERROR_CODE = 500;
     public static final int SUCCESS_CODE = 200;

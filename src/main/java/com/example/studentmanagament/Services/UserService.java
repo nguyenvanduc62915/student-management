@@ -8,6 +8,8 @@ import com.example.studentmanagament.Repositories.UserRepository;
 import com.example.studentmanagament.Services.Imp.UserImp;
 import com.example.studentmanagament.Utils.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -76,6 +78,43 @@ public class UserService implements UserImp {
             baseResponse.setMessage(Constant.SUCCESS_MESSAGE);
             baseResponse.setCode(Constant.SUCCESS_CODE);
         } catch (Exception exception) {
+            baseResponse.setMessage(Constant.ERROR_TO_GET_USER);
+            baseResponse.setCode(Constant.INTERNAL_SERVER_ERROR_CODE);
+        }
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<Page<UserDTO>> getAllByPage(Integer page, Integer limit) {
+        BaseResponse<Page<UserDTO>> baseResponse = new BaseResponse<>();
+        try {
+            if (page == null || limit == null || page <= 0 || limit <= 0){
+                baseResponse.setMessage(Constant.INVALID_PAGE_LIMIT);
+                baseResponse.setCode(Constant.BAD_REQUEST_CODE);
+            }
+            Page<User> userPage = userRepository.findAll(PageRequest.of(page, limit));
+            if (userPage.isEmpty()){
+                baseResponse.setMessage(Constant.EMPTY_ALL_USER);
+                baseResponse.setCode(Constant.NOT_FOUND_CODE);
+                return baseResponse;
+            }
+            Page<UserDTO> userDTOPage = userPage.map(user -> {
+                UserDTO userDTO = new UserDTO();
+                userDTO.setUserId(user.getId());
+                userDTO.setAddress(user.getAddress());
+                userDTO.setPassword(user.getPassword());
+                userDTO.setUsername(user.getUsername());
+                userDTO.setFisrtName(user.getFisrtName());
+                userDTO.setLastName(user.getLastName());
+                userDTO.setEmail(user.getEmail());
+                userDTO.setCreateAt(user.getCreateAt());
+                userDTO.setUpdateAt(user.getUpdateAt());
+                return userDTO;
+            });
+            baseResponse.setData(userDTOPage);
+            baseResponse.setMessage(Constant.SUCCESS_MESSAGE);
+            baseResponse.setCode(Constant.SUCCESS_CODE);
+        } catch (Exception ex) {
             baseResponse.setMessage(Constant.ERROR_TO_GET_USER);
             baseResponse.setCode(Constant.INTERNAL_SERVER_ERROR_CODE);
         }
